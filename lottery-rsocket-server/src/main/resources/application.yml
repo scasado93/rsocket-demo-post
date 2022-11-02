@@ -1,0 +1,15 @@
+lottery:
+  numbers:
+    main:
+      min: 1
+      max: 50
+    special:
+      min: 1
+      max: 12
+
+spring:
+  rsocket:
+    server:
+      port: 8081
+      mapping-path: lottery-game
+      transport: WEBSOCKET

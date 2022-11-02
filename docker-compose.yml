@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  lottery-client:
+    build: ./lottery-rsocket-client
+    container_name: lottery-client
+    ports:
+      - "80:80"
+    depends_on: 
+      - lottery-server
+    restart: always
+
+  lottery-server:
+    build: ./lottery-rsocket-server
+    container_name: lottery-server
+    ports:
+      - "8081:8081"
+    restart: always
+    environment:
+      - LOTTERY_NUMBERS_MAIN_MIN=1
+      - LOTTERY_NUMBERS_MAIN_MAX=50
+      - LOTTERY_NUMBERS_SPECIAL_MIN=1
+      - LOTTERY_NUMBERS_SPECIAL_MAX=12
